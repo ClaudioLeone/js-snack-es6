@@ -30,7 +30,9 @@ bikesArray.forEach(bike => {
     
     if (bikeWgt === lighterWgtBike) {
         console.log(bike);
+
+        domContainer = document.getElementById("container");
+        domContainer.innerHTML += `<span>The most light-weighted bike is: <strong>${bike.name}</strong> and it weights <strong>${bike.weight} Kg</strong></span>`; 
+
     }
 });
-
-console.log(lighterWgtBike);
