@@ -3,7 +3,7 @@
 // [X] Nome sarà l’unica proprietà da compilare, le altre saranno tutte settate a 0.
 // [X] Generare numeri random al posto degli 0 nelle proprietà:
 //      - Punti fatti e falli subiti.
-// [] Infine usando la destrutturazione creiamo un nuovo array i cui elementi contengono solo nomi e falli subiti e stampiamo tutto in console.
+// [X] Infine usando la destrutturazione creiamo un nuovo array i cui elementi contengono solo nomi e falli subiti e stampiamo tutto in console.
 
 const teamsArray = [
     {
@@ -23,16 +23,28 @@ const teamsArray = [
     },
 ];
 
-
+const [foo, boo, coo] = teamsArray;
 let updatedTeamArray = [];
+
 teamsArray.forEach(team => {
-    let teamName = team.name;
-    let teamPoints = team.points;
-    let teamFouls = team.fouls;
-
-    teamPoints = Math.floor(Math.random() * 101);
-    teamFouls = Math.floor(Math.random() * 12);
-
-    console.log("Points are: " + teamPoints);
-    console.log("Fouls are: " + teamFouls);
+    team.points = Math.floor(Math.random() * 101);
+    team.fouls = Math.floor(Math.random() * 23);
+    
+    delete team.points;
 });
+
+updatedTeamArray.push(foo, boo, coo);
+console.log(updatedTeamArray);
+
+const domContainer = document.getElementById("container");
+domContainer.innerHTML += `
+    <span><strong>TEAMS</strong> are: 
+        <ul>
+            <li><strong>${foo.name}</strong> &rarr; 👟💥 Falli: <strong>${foo.fouls}</strong></li>
+            <br>
+            <li><strong>${boo.name}</strong> &rarr; 👟💥 Falli: <strong>${boo.fouls}</strong></li>
+            <br>
+            <li><strong>${coo.name}</strong> &rarr; 👟💥 Falli: <strong>${coo.fouls}</strong></li>
+        </ul>
+    </span>
+`;
